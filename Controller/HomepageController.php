@@ -12,11 +12,12 @@ class HomepageController
 
         $makeUser = new UserMaker();
         $everyone = $makeUser ->fetchUsers();
-        var_dump($everyone);
-        //you should not echo anything inside your controller - only assign vars here
-        // then the view will actually display them.
 
+        //you should not echo anything inside your controller - only assign vars here
+        // then the view will actually display them.    echo($everyone[0]);
         //load the view
         require 'View/homepage.php';
+
+
     }
 }
