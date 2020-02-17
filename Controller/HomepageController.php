@@ -27,7 +27,19 @@ class HomepageController
         }
 
 
-        if (isset($_POST))
+        if (!isset($_POST['users'])) {
+            $_POST['users'] = "test";
+        } else {
+            echo $_POST['users'];
+        }
+
+        if (!isset($_POST['product'])) {
+            $_POST['product'] = "test";
+        } else {
+            $productId = $_POST['product'];
+            echo '<br>'.$_POST['product'];
+        }
+
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);

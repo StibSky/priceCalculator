@@ -13,10 +13,10 @@
     <section>
         <label for="users">Choose a person:</label>
 
-        <select id="users">
+        <select id="users" name="users">
 
             <?php for ($i = 0; $i < count($userArray); $i++): ?>
-                <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo$userArray[$i]->getName() ?></option>
+                <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo $userArray[$i]->getName() ?></option>
             <?php endfor; ?>
 
 
