@@ -26,10 +26,10 @@ class HomepageController
             $productArray[$i] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
         }
 
-
         if (!isset($_POST['users'])) {
             $_POST['users'] = "test";
         } else {
+            $userId = $_POST['users'];
             echo $_POST['users'];
         }
 
@@ -40,6 +40,8 @@ class HomepageController
             echo '<br>'.$_POST['product'];
         }
 
+        
+        echo $productArray[$productId]->getProductDescription();
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
