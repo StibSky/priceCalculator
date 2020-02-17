@@ -9,9 +9,6 @@ class HomepageController
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render()
     {
-
-
-
         $makeUser = new UserMaker();
         $everyone = $makeUser ->fetchUsers();
 
@@ -21,9 +18,13 @@ class HomepageController
 
         $userArray[0]->getName();
 
-
         $makeProduct = new ProductMaker();
         $allProducts = $makeProduct -> fetchProducts();
+
+        for ($i = 0; $i < count($allProducts); $i++) {
+
+            $productArray[$i] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
+        }
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
