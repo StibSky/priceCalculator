@@ -14,19 +14,14 @@
         <label for="users">Choose a person:</label>
 
         <select id="users">
-
             <?php for ($i = 0; $i < count($userArray); $i++): ?>
                 <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo$userArray[$i]->getName() ?></option>
             <?php endfor; ?>
-
-
         </select>
     </section>
     <section>
         <label for="product">Choose a product:</label>
-
         <select name="product" id="product">
-
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
                 <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
