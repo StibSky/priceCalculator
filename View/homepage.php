@@ -22,9 +22,6 @@
 
         </select>
     </section>
-</form>
-
-<form action="#" method="post">
     <section>
         <label for="product">Choose a product:</label>
 
@@ -37,6 +34,7 @@
 
         </select>
     </section>
+    <input type="submit" value="require">
 </form>
 <?php require 'includes/footer.php' ?>
 </body>
