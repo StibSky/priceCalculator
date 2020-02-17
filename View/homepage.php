@@ -28,11 +28,11 @@
         <select name="product" id="product">
 
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
-                <option value= <?php echo $productArray[$i]->getPRoductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
+                <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
         </select>
     </section>
-    <input type="submit" value="require">
+    <input type="submit" value="require" name="submitButton">
 </form>
 <?php require 'includes/footer.php' ?>
 </body>
