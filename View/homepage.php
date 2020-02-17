@@ -30,8 +30,8 @@
 
         <select name="product" id="product">
 
-            <?php for ($i = 0; $i < count($allProducts); $i++): ?>
-                <option value= <?php echo $allProducts[$i]['id'] ?>> <?php echo $allProducts[$i]['name'] ?></option>
+            <?php for ($i = 0; $i < count($productArray); $i++): ?>
+                <option value= <?php echo $productArray[$i]->getPRoductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
 
 
