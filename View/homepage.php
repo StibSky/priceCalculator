@@ -34,7 +34,7 @@
 
         </select>
     </section>
-    <input type="submit" value="require">
+    <input type="submit" value="require" name="submitButton">
 </form>
 <?php require 'includes/footer.php' ?>
 </body>
