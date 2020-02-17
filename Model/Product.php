@@ -33,4 +33,5 @@ class Product
     public function getProductPrice() : float {
         return  $this -> price;
     }
+
 }
