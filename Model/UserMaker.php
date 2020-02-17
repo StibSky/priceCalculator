@@ -6,11 +6,11 @@ class UserMaker
 //get json
     public function fetchUsers(): array
     {
-        $list = [];
-        $json = json_decode(file_get_contents('Data/customers.json'), true);
-        foreach ($json AS $customerJson) {
-            $list[] = new User($customerJson['id'], $customerJson['name'], $customerJson['group_id']);
+        $userList = [];
+        $data = json_decode(file_get_contents('Data/customers.json'), true);
+        foreach ($data AS $userData) {
+            $list[] = new User($userData['id'], $userData['name'], $userData['group_id']);
         }
-        return $list;
+        return $userList;
     }
 }
