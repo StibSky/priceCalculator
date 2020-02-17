@@ -8,9 +8,7 @@ class ProductMaker
     {
         $productlist = [];
         $json = json_decode(file_get_contents('Data/products.json'), true);
-        foreach ($json AS $productJson) {
-            $productlist[] = new ProductMaker($productJson['id'], $productJson['name'], $productJson['description'], $productJson['price']);
-        }
+
         return $json;
     }
 }

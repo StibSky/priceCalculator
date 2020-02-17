@@ -12,3 +12,4 @@ class GroupMaker
         return $groups;
     }
 }
+
