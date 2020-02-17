@@ -30,7 +30,7 @@ class Product
     public function getProductDescription() : string {
         return  $this -> description;
     }
-    public function getProductPrice() : int {
+    public function getProductPrice() : float {
         return  $this -> price;
     }
 }
