@@ -2,37 +2,37 @@
     {
         "id": 0,
         "name": "mouse pad",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor0",
         "price": 23.17
     },
     {
         "id": 1,
         "name": "nail file",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor1",
         "price": 5.38
     },
     {
         "id": 2,
         "name": "tooth picks",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor2",
         "price": 97.4
     },
     {
         "id": 3,
         "name": "lamp shade",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor3",
         "price": 48.14
     },
     {
         "id": 4,
         "name": "glass",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor4",
         "price": 85.8
     },
     {
         "id": 5,
         "name": "mirror",
-        "description": "lorum ipsum dolor",
+        "description": "lorum ipsum dolor5",
         "price": 66.52
     },
     {
