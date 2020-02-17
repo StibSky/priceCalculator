@@ -8,16 +8,19 @@ class UserMaker
     {
         $userList = [];
         $data = json_decode(file_get_contents('Data/customers.json'), true);
+        foreach ($data AS $userData) {
+            $userList[] = new User($userData['id'], $userData['name'], $userData['group_id']);
+        }
         return $data;
     }
 
-    public function loadbyId (int $customerId) :? Customer {
-        $data = json_decode(file_get_contents('Data/customers.json'), true);
-        foreach ($data AS $userIdData){
-            if ($userIdData['id'] === $customerId){
-                return new User($userIdData['id'], $userIdData['name'], $userIdData['group_id']);
-            }
-        }
-        return null;
-    }
+//    public function loadbyId (int $customerId) :? Customer {
+//        $data = json_decode(file_get_contents('Data/customers.json'), true);
+//        foreach ($data AS $userIdData){
+//            if ($userIdData['id'] === $customerId){
+//                return new User($userIdData['id'], $userIdData['name'], $userIdData['group_id']);
+//            }
+//        }
+//        return null;
+//    }
 }

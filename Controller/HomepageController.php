@@ -13,6 +13,9 @@ class HomepageController
         $makeUser = new UserMaker();
         $everyone = $makeUser ->fetchUsers();
 
+        $makeProduct = new ProductMaker();
+        $allProducts = $makeProduct -> fetchProducts();
+
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
         //load the view

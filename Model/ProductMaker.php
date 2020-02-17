@@ -6,9 +6,11 @@ class ProductMaker
 //get json
     public function fetchProducts(): array
     {
-        $products= [];
-        $products = json_decode(file_get_contents('Data/products.json'), true);
-
-        return $products;
+        $productlist = [];
+        $json = json_decode(file_get_contents('Data/products.json'), true);
+        foreach ($json AS $productJson) {
+            $productlist[] = new ProductMaker($productJson['id'], $productJson['name'], $productJson['description'], $productJson['price']);
+        }
+        return $json;
     }
 }
