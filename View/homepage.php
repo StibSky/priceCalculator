@@ -9,30 +9,35 @@
 </head>
 <body>
 <?php require 'includes/header.php' ?>
-<section>
-    <label for="users">Choose a person:</label>
+<form action="#" method="post">
+    <section>
+        <label for="users">Choose a person:</label>
 
-    <select id="users">
+        <select id="users">
 
-        <?php for ($i = 0; $i < count($everyone); $i++): ?>
-            <option value= <?php echo $everyone[$i]['id'] ?>> <?php echo $everyone[$i]['name'] ?></option>
-        <?php endfor; ?>
-
-
-    </select>
-</section>
-<section>
-    <label for="product">Choose a product:</label>
-
-    <select id="product">
-
-        <?php for ($i = 0; $i < count($allProducts); $i++): ?>
-            <option value= <?php echo $allProducts[$i]['id'] ?>> <?php echo $allProducts[$i]['name'] ?></option>
-        <?php endfor; ?>
+            <?php for ($i = 0; $i < count($userArray); $i++): ?>
+                <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo$userArray[$i]->getName() ?></option>
+            <?php endfor; ?>
 
 
-    </select>
-</section>
+        </select>
+    </section>
+</form>
+
+<form action="#" method="post">
+    <section>
+        <label for="product">Choose a product:</label>
+
+        <select name="product" id="product">
+
+            <?php for ($i = 0; $i < count($allProducts); $i++): ?>
+                <option value= <?php echo $allProducts[$i]['id'] ?>> <?php echo $allProducts[$i]['name'] ?></option>
+            <?php endfor; ?>
+
+
+        </select>
+    </section>
+</form>
 <?php require 'includes/footer.php' ?>
 </body>
 </html>

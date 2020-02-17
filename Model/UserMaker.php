@@ -8,9 +8,6 @@ class UserMaker
     {
         $userList = [];
         $data = json_decode(file_get_contents('Data/customers.json'), true);
-        foreach ($data AS $userData) {
-            $userList[] = new User($userData['id'], $userData['name'], $userData['group_id']);
-        }
         return $data;
     }
 

@@ -10,8 +10,17 @@ class HomepageController
     public function render()
     {
 
+
+
         $makeUser = new UserMaker();
         $everyone = $makeUser ->fetchUsers();
+
+        for ($i = 0; $i < count($everyone); $i++) {
+            $userArray[$i] = new User($everyone[$i]['id'], $everyone[$i]['name'], $everyone[$i]['group_id']);
+        }
+
+        $userArray[0]->getName();
+
 
         $makeProduct = new ProductMaker();
         $allProducts = $makeProduct -> fetchProducts();

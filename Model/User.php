@@ -11,7 +11,7 @@ class User
     {
         $this->id = $id;
         $this->name = $name;
-        $this->group = $groupId;
+        $this->groupId = $groupId;
     }
 
     public function getName() : string
