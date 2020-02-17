@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-class Product
+class Group
 {
 
     private $id;

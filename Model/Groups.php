@@ -6,15 +6,16 @@ class Groups
 
     private $id;
     private $name;
-    private $description;
-    private $price;
+    private $variabele_discount;
+    private $discount;
+    private $group_id;
 
-    public function __construct(int $id, string $name, string $description, int $price)
+    public function __construct(int $id, string $name, string $discount, int $group_id)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
+        $this->discount = $discount;
+        $this->group_id = $group_id;
     }
 
     public function getProductName() : string
