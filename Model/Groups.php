@@ -6,7 +6,6 @@ class Groups
 
     private $id;
     private $name;
-    private $variabele_discount;
     private $discount;
     private $group_id;
 
@@ -18,20 +17,20 @@ class Groups
         $this->group_id = $group_id;
     }
 
-    public function getProductName() : string
+    public function getGroupName() : string
     {
         return $this->name;
     }
 
-    public function getProductId() : int
+    public function getGroupId() : int
     {
         return $this -> id;
     }
 
-    public function getProductDescription() : string {
-        return  $this -> description;
+    public function getGroupDiscount() : string {
+        return  $this -> discount;
     }
-    public function getProductPrice() : int {
-        return  $this -> price;
+    public function getGroupGroupId() : int {
+        return  $this -> group_id;
     }
 }
