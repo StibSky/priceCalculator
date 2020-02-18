@@ -28,6 +28,10 @@
             <?php endfor; ?>
         </select>
     </section>
+    <H2></H2>
+    <p><?php echo $productArray[$productId]->getProductDescription()?></p>
+    <H3><?php echo $productArray[$productId]->getProductPrice() ?></H3>
+
     <input type="submit" value="require" name="submitButton">
 </form>
 <?php require 'includes/footer.php' ?>
