@@ -10,6 +10,7 @@ class HomepageController
     public function render()
     {
 
+        $allUserGroups = [];
         //make array of user objects
         $makeUser = new UserMaker();
         $everyone = $makeUser->fetchUsers();
@@ -19,7 +20,7 @@ class HomepageController
         }
 
 
-        //make array of product objects
+        //make array of group objects
         $makeGroups = new GroupMaker();
         $allGroups = $makeGroups->fetchGroups();
 
@@ -30,10 +31,19 @@ class HomepageController
             $userId = $_POST['users'];
         }
 
+        //make array of product objects
+        $makeProduct = new ProductMaker();
+        $allProducts = $makeProduct->fetchProducts();
+
+        for ($i = 0; $i < count($allProducts); $i++) {
+
+            $productArray[$allProducts[$i]['id']] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
+        }
+
+
         //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
 
-      echo "userid".$userArray[$userId]->getgroupId().'<br>';   // get the userid
-
+        echo "userid" . $userArray[$userId]->getgroupId() . '<br>';   // get the userid
 
 
         if (!isset($_POST['product'])) {
@@ -41,7 +51,6 @@ class HomepageController
         } else {
             $productId = $_POST['product'];
         }
-
 
 
         for ($i = 0; $i < count($allGroups); $i++) {
@@ -55,22 +64,17 @@ class HomepageController
                 $allGroups[$i]['group_id'] = 0;
             }
 
-            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"],$allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
         }
 
-        echo $groupArray[$userArray[$userId]->getgroupId()]->getGroupName();
 
-        
+        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
+        $userGroupId = $userArray[$userId]->getgroupId();
 
-        //make array of group objects
-        $makeProduct = new ProductMaker();
-        $allProducts = $makeProduct->fetchProducts();
-
-        for ($i = 0; $i < count($allProducts); $i++) {
-
-            $productArray[$allProducts[$i]['id']] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
-        }
-
+        echo "ggid " . $groupGroupId;
+        var_dump($groupArray[$groupGroupId]);
+        array_push($allUserGroups, $groupArray[$userGroupId]);
+        var_dump($allUserGroups);
 
 
         //echo $productArray[$productId]->getProductDescription().'<br>';  // get the productdescription
