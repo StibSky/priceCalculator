@@ -52,29 +52,38 @@ class HomepageController
             $productId = $_POST['product'];
         }
 
+//
+//        for ($i = 0; $i < count($allGroups); $i++) {
+//            if (!isset($allGroups[$i]['variable_discount'])) {
+//                $allGroups[$i]['variable_discount'] = 0;
+//            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
+//                $allGroups[$i]['fixed_discount'] = 0;
+//            }
+//
+//            if (!isset($allGroups[$i]['group_id'])) {
+//                $allGroups[$i]['group_id'] = 10000000;
+//            }
+//
+//            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+//        }
 
-        for ($i = 0; $i < count($allGroups); $i++) {
-            if (!isset($allGroups[$i]['variable_discount'])) {
-                $allGroups[$i]['variable_discount'] = 0;
-            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
-                $allGroups[$i]['fixed_discount'] = 0;
-            }
 
-            if (!isset($allGroups[$i]['group_id'])) {
-                $allGroups[$i]['group_id'] = 0;
-            }
-
-            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
-        }
+   
 
 
-        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
-        $userGroupId = $userArray[$userId]->getgroupId();
+//        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
+//        $userGroupId = $userArray[$userId]->getgroupId();
+//
+//
+//        echo "ggid " . $groupGroupId;
+//        var_dump($groupArray[$groupGroupId]);
+//        array_push($allUserGroups, $groupArray[$userGroupId]);
+//        var_dump($allUserGroups);
+//
+//        for($i = 0; $i< count($groupArray); $i++) {
+//            array_push($allUserGroups, $groupArray[$groupGroupId]);
+//        }
 
-        echo "ggid " . $groupGroupId;
-        var_dump($groupArray[$groupGroupId]);
-        array_push($allUserGroups, $groupArray[$userGroupId]);
-        var_dump($allUserGroups);
 
 
         //echo $productArray[$productId]->getProductDescription().'<br>';  // get the productdescription
