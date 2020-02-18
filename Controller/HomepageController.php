@@ -133,8 +133,7 @@ class HomepageController
         } else {
             array_push($allUserGroups, $groupArray[$groupArray[$groupGroupId]->getGroupGroupId()]);
         }
-
-        var_dump($allUserGroups);
+        
 
         //array for all variable numbers
         $variableArray = [];
@@ -153,8 +152,6 @@ class HomepageController
 
         }
 
-        var_dump($fixedArray);
-        var_dump($variableArray);
 
         //gets the highest variable
         if (!empty($variableArray)) {
@@ -176,8 +173,6 @@ class HomepageController
             $countFixed = 0;
         }
 
-        echo $maxVariable;
-        echo "<br>". $countFixed;
 
 
         //the price - only the fixed reduction
@@ -186,7 +181,6 @@ class HomepageController
             $fixedreductionResult =0;
         }
 
-        echo "<br>result - fixed " . $fixedreductionResult;
 
 
 
@@ -196,7 +190,7 @@ class HomepageController
 
         $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable,2);
 //the price with only the variable reduction
-        echo "<br>result - variable " . $variableReductionResult;
+
 
         $compareArray = [];
         array_push($compareArray,$fixedreductionResult,$variableReductionResult );
@@ -220,7 +214,6 @@ class HomepageController
             $finalResult = 0;
         }
 
-        echo "<br> final result ".$finalResult;
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
