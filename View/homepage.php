@@ -43,7 +43,7 @@
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have chosen: </p>
         <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
         <p class="card-text"><?php echo $productArray[$productId]->getProductDescription()?></p>
-    <H3><?php echo $productArray[$productId]->getProductPrice() ?>€</H3>
+    <H3><?php echo $finalResult ?>€</H3>
     </div>
 </div>
 <table class="table mt-4">
@@ -53,20 +53,18 @@
         <th scope="col">client-name</th>
         <th scope="col">product-name</th>
         <th scope="col">original price</th>
-        <th scope="col">client-discount</th>
         <th scope="col">fixed-discount</th>
         <th scope="col">variable-discount</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row"><?php echo $userArray[$userId]->getId() ?></th>
+        <td><?php echo $userArray[$userId]->getName() ?></td>
+        <td><?php echo $productArray[$productId]->getProductName() ?></td>
+        <td><?php echo $productArray[$productId]->getProductPrice(); ?></td>
+        <td><?php $countFixed ?></td>s
+        <td><?php $maxVariable."%" ?></td>
     </tr>
     </tbody>
 </table>
