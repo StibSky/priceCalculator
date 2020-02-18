@@ -133,7 +133,7 @@ class HomepageController
         } else {
             array_push($allUserGroups, $groupArray[$groupArray[$groupGroupId]->getGroupGroupId()]);
         }
-        
+
 
         //array for all variable numbers
         $variableArray = [];
@@ -198,9 +198,9 @@ class HomepageController
 
         //see what discount is better
         if ($winningDiscount == $fixedreductionResult ) {
-            echo "<br>fixed wins";
+        
         } elseif ($winningDiscount == $variableReductionResult ) {
-            echo "<br>variable wins";
+
         }
 
 
