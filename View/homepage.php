@@ -11,8 +11,9 @@
 <?php require 'includes/header.php' ?>
 <div class="form-group">
 <form action="#" method="post">
+    <div class="row">
     <section>
-        <div class="form-group">
+        <div class="form-group" class="col">
         <label for="users">Choose a person:</label>
 
         <select id="users" name="users" class="form-control">
@@ -24,7 +25,7 @@
         </div>
     </section>
     <section>
-        <div class="form-group">
+        <div class="form-group" class="col">
         <label for="product">Choose a product:</label>
         <select name="product" id="product" class="form-control">
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
@@ -33,6 +34,7 @@
         </select>
         </div>
     </section>
+    </div>
     <input type="submit" value="require" name="submitButton" class="btn btn-primary">
 </form>
 </div>
