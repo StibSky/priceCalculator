@@ -46,6 +46,48 @@
     <H3><?php echo $productArray[$productId]->getProductPrice() ?>€</H3>
     </div>
 </div>
+<table class="table mt-4">
+    <thead>
+    <tr>
+        <th scope="col">#client-id</th>
+        <th scope="col">client-name</th>
+        <th scope="col">product-name</th>
+        <th scope="col">original price</th>
+        <th scope="col">client-discount</th>
+        <th scope="col">fixed-discount</th>
+        <th scope="col">variable-discount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>
 <?php require 'includes/footer.php' ?>
 </body>
 </html>
