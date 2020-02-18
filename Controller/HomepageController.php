@@ -46,7 +46,6 @@ class HomepageController
         }
 
         //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
-       // echo $userArray[$userId]->getName().'<br>';  // ask for the username
         echo $userArray[$userId]->getId().'<br>';   // get the userid
 
         if (!isset($_POST['product'])) {
@@ -54,9 +53,6 @@ class HomepageController
         } else {
             $productId = $_POST['product'];
         }
-
-        //echo $productArray[$productId]->getProductDescription().'<br>';  // get the productdescription
-        //echo $productArray[$productId]->getProductPrice();  // get the productprice
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
