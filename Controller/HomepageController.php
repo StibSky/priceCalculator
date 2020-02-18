@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -12,41 +12,55 @@ class HomepageController
 
         //make array of user objects
         $makeUser = new UserMaker();
-        $everyone = $makeUser ->fetchUsers();
+        $everyone = $makeUser->fetchUsers();
 
         for ($i = 0; $i < count($everyone); $i++) {
             $userArray[$everyone[$i]['id']] = new User($everyone[$i]['id'], $everyone[$i]['name'], $everyone[$i]['group_id']);
         }
 
 
-//        //make array of product objects
-//        $makeGroups = new GroupMaker();
-//        $allGroups = $makeGroups -> fetchProducts();
-//
-//        for ($i = 0; $i < count($allGroups); $i++) {
-//
-//            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'],$allGroups[$i]['discount'], $allGroups[$i]['group_id']);
-//        }
+        //make array of product objects
+        $makeGroups = new GroupMaker();
+        $allGroups = $makeGroups->fetchGroups();
 
+
+
+        for ($i = 0; $i < count($allGroups); $i++) {
+            if (!isset($allGroups[$i]['variable_discount'])) {
+                $allGroups[$i]['variable_discount'] = 0;
+            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
+                $allGroups[$i]['fixed_discount'] = 0;
+            }
+
+            if (!isset($allGroups[$i]['group_id'])) {
+                $allGroups[$i]['group_id'] = 0;
+            }
+
+            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"],$allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+        }
+
+
+        var_dump($groupArray);
 
         //make array of group objects
         $makeProduct = new ProductMaker();
-        $allProducts = $makeProduct -> fetchProducts();
+        $allProducts = $makeProduct->fetchProducts();
 
         for ($i = 0; $i < count($allProducts); $i++) {
 
             $productArray[$allProducts[$i]['id']] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
         }
 
-        $userId ="";
+        $userId = "";
         if (!isset($_POST['users'])) {
-           $_POST['users'] = "test";
+            $_POST['users'] = "test";
         } else {
             $userId = $_POST['users'];
         }
 
-        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
+
         echo $userArray[$userId]->getId().'<br>';   // get the userid
+
 
         if (!isset($_POST['product'])) {
             $_POST['product'] = "test";
