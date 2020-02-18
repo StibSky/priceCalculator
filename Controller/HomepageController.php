@@ -23,6 +23,23 @@ class HomepageController
         $makeGroups = new GroupMaker();
         $allGroups = $makeGroups->fetchGroups();
 
+        $userId = "";
+        if (!isset($_POST['users'])) {
+            $_POST['users'] = "test";
+        } else {
+            $userId = $_POST['users'];
+        }
+
+        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
+        echo $userArray[$userId]->getgroupId().'<br>';   // get the userid
+
+
+        if (!isset($_POST['product'])) {
+            $_POST['product'] = "test";
+        } else {
+            $productId = $_POST['product'];
+        }
+
 
 
         for ($i = 0; $i < count($allGroups); $i++) {
@@ -51,22 +68,7 @@ class HomepageController
             $productArray[$allProducts[$i]['id']] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
         }
 
-        $userId = "";
-        if (!isset($_POST['users'])) {
-            $_POST['users'] = "test";
-        } else {
-            $userId = $_POST['users'];
-        }
 
-        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
-        echo $userArray[$userId]->getId().'<br>';   // get the userid
-
-
-        if (!isset($_POST['product'])) {
-            $_POST['product'] = "test";
-        } else {
-            $productId = $_POST['product'];
-        }
 
         //echo $productArray[$productId]->getProductDescription().'<br>';  // get the productdescription
         //echo $productArray[$productId]->getProductPrice();  // get the productprice
