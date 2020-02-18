@@ -28,11 +28,13 @@
             <?php endfor; ?>
         </select>
     </section>
-    <H2></H2>
-    <p><?php echo $productArray[$productId]->getProductDescription()?></p>
-    <H3><?php echo $productArray[$productId]->getProductPrice() ?></H3>
-
     <input type="submit" value="require" name="submitButton">
+    <p>You are <?php echo $userArray[$userId]->getName() ?> and you have choosen: </p>
+    <H2><?php echo $productArray[$productId]->getProductName(); ?></H2>
+    <p><?php echo $productArray[$productId]->getProductDescription()?></p>
+    <H3><?php echo $productArray[$productId]->getProductPrice() ?>€</H3>
+
+
 </form>
 <?php require 'includes/footer.php' ?>
 </body>
