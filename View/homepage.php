@@ -1,5 +1,14 @@
-<?php require 'includes/header.php' ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Becode - Boiler plate MVC</title>
+</head>
 <body>
+<?php require 'includes/header.php' ?>
 <form action="#" method="post">
     <section>
         <label for="users">Choose a person:</label>
@@ -19,18 +28,12 @@
             <?php endfor; ?>
         </select>
     </section>
-</form>
     <input type="submit" value="require" name="submitButton">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have choosen: </p>
-            <h5 class="card-title">
-                <?php echo $productArray[$productId]->getProductName(); ?>
-            </h5>
-            <p class="card-text">
-                <?php echo $productArray[$productId]->getProductDescription()?></p>
+    <H2><?php echo $productArray[$productId]->getProductName(); ?></H2>
+    <p><?php echo $productArray[$productId]->getProductDescription()?></p>
     <H3><?php echo $productArray[$productId]->getProductPrice() ?>€</H3>
-        </div>
-    </div>
-
+</form>
 <?php require 'includes/footer.php' ?>
+</body>
+</html>
