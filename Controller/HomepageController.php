@@ -10,7 +10,7 @@ class HomepageController
     public function render()
     {
 
-        $allUserGroups = [];
+
         //make array of user objects
         $makeUser = new UserMaker();
         $everyone = $makeUser->fetchUsers();
@@ -21,8 +21,7 @@ class HomepageController
 
 
         //make array of group objects
-        $makeGroups = new GroupMaker();
-        $allGroups = $makeGroups->fetchGroups();
+
 
         $userId = "";
         if (!isset($_POST['users'])) {
@@ -41,9 +40,23 @@ class HomepageController
         }
 
 
-        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
+        $makeGroups = new GroupMaker();
+        $allGroups = $makeGroups->fetchGroups();
 
-        echo "userid" . $userArray[$userId]->getgroupId() . '<br>';   // get the userid
+        for ($i = 0; $i < count($allGroups); $i++) {
+            if (!isset($allGroups[$i]['variable_discount'])) {
+                $allGroups[$i]['variable_discount'] = 0;
+            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
+                $allGroups[$i]['fixed_discount'] = 0;
+            }
+
+            if (!isset($allGroups[$i]['group_id'])) {
+                $allGroups[$i]['group_id'] = 10000000;
+            }
+
+            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+        }
+        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
 
 
         if (!isset($_POST['product'])) {
@@ -52,42 +65,77 @@ class HomepageController
             $productId = $_POST['product'];
         }
 
+
+        // THIS LOOPS SHOULD WORK BUT DOESNT YET, CHECK BELLOW FOR HARDCODING
+
+
+//        function findgroup($id, $array)
+//        {
+//            foreach ($array as $group) {
+//                if ($group->getGroupId() == $id) {
+//                    return $group;
+//                }
+//            }
+//        }
 //
-//        for ($i = 0; $i < count($allGroups); $i++) {
-//            if (!isset($allGroups[$i]['variable_discount'])) {
-//                $allGroups[$i]['variable_discount'] = 0;
-//            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
-//                $allGroups[$i]['fixed_discount'] = 0;
+//        function getAllGroups($searchId)
+//        {
+//            $makeGroups = new GroupMaker();
+//            $allGroups = $makeGroups->fetchGroups();
+//
+//            for ($i = 0; $i < count($allGroups); $i++) {
+//                if (!isset($allGroups[$i]['variable_discount'])) {
+//                    $allGroups[$i]['variable_discount'] = 0;
+//                } elseif (!isset($allGroups[$i]['fixed_discount'])) {
+//                    $allGroups[$i]['fixed_discount'] = 0;
+//                }
+//
+//                if (!isset($allGroups[$i]['group_id'])) {
+//                    $allGroups[$i]['group_id'] = 10000000;
+//                }
+//
+//                $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+//            }
+//            $groupsFound = [];
+//
+//            while ($searchId !== 10000000) {
+//                $newGroup = findgroup($searchId, $groupArray);
+//                array_push($groupsFound, $newGroup);
+//                if ($newGroup->getGroupGroupId() !== 10000000)
+//		    {
+//                $searchId = $newGroup->getGroupGroupId();
+//		    }
+//		    else
+//		    {
+//                $searchID = 10000000;
 //            }
 //
-//            if (!isset($allGroups[$i]['group_id'])) {
-//                $allGroups[$i]['group_id'] = 10000000;
 //            }
-//
-//            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
+//            return $groupsFound;
 //        }
-
-
-
-
-
-//        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
-//        $userGroupId = $userArray[$userId]->getgroupId();
 //
-//
-//        echo "ggid " . $groupGroupId;
-//        var_dump($groupArray[$groupGroupId]);
-//        array_push($allUserGroups, $groupArray[$userGroupId]);
-//        var_dump($allUserGroups);
-//
-//        for($i = 0; $i< count($groupArray); $i++) {
-//            array_push($allUserGroups, $groupArray[$groupGroupId]);
-//        }
+//       $customerGroupDisplay = getAllGroups($userArray[$userId]->getgroupId());
 
 
 
-        //echo $productArray[$productId]->getProductDescription().'<br>';  // get the productdescription
-        //echo $productArray[$productId]->getProductPrice();  // get the productprice
+        //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP
+        $allUserGroups = [];
+
+        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
+        $userGroupId = $userArray[$userId]->getgroupId();
+
+
+
+        array_push($allUserGroups, $groupArray[$userGroupId]);
+        array_push($allUserGroups, $groupArray[$groupGroupId]);
+        if ($groupArray[$groupGroupId]->getGroupGroupId() == 10000000) {
+            echo "stop";
+        } else {
+            array_push($allUserGroups, $groupArray[$groupArray[$groupGroupId]->getGroupGroupId()]);
+        }
+
+        var_dump($allUserGroups);
+
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
