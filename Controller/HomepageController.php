@@ -41,9 +41,8 @@ class HomepageController
             $productId = $_POST['product'];
         }
 
-
-        echo $productArray[$productId]->getProductDescription().'<br>';
-        echo $productArray[$productId]->getProductPrice();
+        //echo $productArray[$productId]->getProductDescription().'<br>';
+        //echo $productArray[$productId]->getProductPrice();
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.    echo($everyone[0]);
         //load the view
