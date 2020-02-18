@@ -68,7 +68,7 @@ class HomepageController
 //        }
 
 
-   
+
 
 
 //        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
