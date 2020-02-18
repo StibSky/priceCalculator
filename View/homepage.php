@@ -43,7 +43,7 @@
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have chosen: </p>
         <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
         <p class="card-text"><?php echo $productArray[$productId]->getProductDescription()?></p>
-    <H3><?php echo $finalResult ?>€</H3>
+        <H3><?php echo $finalResult ?>€ </H3><small>(price with reduction)</small>
     </div>
 </div>
 <table class="table mt-4">
