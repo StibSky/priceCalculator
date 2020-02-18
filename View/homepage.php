@@ -14,9 +14,9 @@
     <div class="row">
     <section>
         <div class="form-group" class="col">
-        <label for="users">Choose a person:</label>
+        <label for="users" class="ml-3">Choose a person:</label>
 
-        <select id="users" name="users" class="form-control">
+        <select id="users" name="users" class="form-control ml-3">
 
             <?php for ($i = 0; $i < count($userArray); $i++): ?>
                 <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo $userArray[$i]->getName() ?></option>
@@ -26,8 +26,8 @@
     </section>
     <section>
         <div class="form-group" class="col">
-        <label for="product">Choose a product:</label>
-        <select name="product" id="product" class="form-control ml-3">
+        <label for="product" class="ml-4">Choose a product:</label>
+        <select name="product" id="product" class="form-control ml-4">
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
                 <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
