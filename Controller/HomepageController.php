@@ -58,6 +58,7 @@ class HomepageController
             $userId = $_POST['users'];
         }
 
+        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
 
         echo $userArray[$userId]->getId().'<br>';   // get the userid
 
