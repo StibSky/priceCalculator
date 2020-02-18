@@ -19,8 +19,14 @@ class HomepageController
         }
 
 
-        //make array of product objects
-     
+//        //make array of product objects
+//        $makeGroups = new GroupMaker();
+//        $allGroups = $makeGroups -> fetchProducts();
+//
+//        for ($i = 0; $i < count($allGroups); $i++) {
+//
+//            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'],$allGroups[$i]['discount'], $allGroups[$i]['group_id']);
+//        }
 
 
         //make array of group objects
