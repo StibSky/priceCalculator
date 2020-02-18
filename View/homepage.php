@@ -10,7 +10,7 @@
 <body>
 <?php require 'includes/header.php' ?>
 <div class="form-group">
-<form action="#" method="post">
+<form action="#" method="post" class="pl-5">
     <div class="row">
     <section>
         <div class="form-group" class="col">
@@ -27,7 +27,7 @@
     <section>
         <div class="form-group" class="col">
         <label for="product">Choose a product:</label>
-        <select name="product" id="product" class="form-control">
+        <select name="product" id="product" class="form-control ml-3">
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
                 <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
@@ -38,7 +38,7 @@
     <input type="submit" value="require" name="submitButton" class="btn btn-primary">
 </form>
 </div>
-<div class="card" style="width: 18rem;">
+<div class="card ml-5" style="width: 18rem;">
     <div class="card-body">
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have chosen: </p>
         <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
