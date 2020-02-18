@@ -30,11 +30,14 @@
     </section>
     <input type="submit" value="require" name="submitButton">
 </form>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have chosen: </p>
-    <H2><?php echo $productArray[$productId]->getProductName(); ?></H2>
-    <p><?php echo $productArray[$productId]->getProductDescription()?></p>
+        <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
+        <p class="card-text"><?php echo $productArray[$productId]->getProductDescription()?></p>
     <H3><?php echo $productArray[$productId]->getProductPrice() ?>€</H3>
-
+    </div>
+</div>
 <?php require 'includes/footer.php' ?>
 </body>
 </html>
