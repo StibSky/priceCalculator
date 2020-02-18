@@ -63,7 +63,7 @@
         <td><?php echo $userArray[$userId]->getName() ?></td>
         <td><?php echo $productArray[$productId]->getProductName() ?></td>
         <td><?php echo $productArray[$productId]->getProductPrice()." €"; ?></td>
-        <td><?php echo $countFixed ?></td>s
+        <td><?php echo $countFixed ?></td>
         <td><?php echo $maxVariable."%" ?></td>
     </tr>
     </tbody>
