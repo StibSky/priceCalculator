@@ -85,7 +85,5 @@ class HomepageController
         //load the view
 
         require 'View/homepage.php';
-
-
     }
 }
