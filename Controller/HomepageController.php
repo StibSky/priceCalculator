@@ -136,9 +136,12 @@ class HomepageController
 
         var_dump($allUserGroups);
 
+        //array for all variable numbers
         $variableArray = [];
+        //array for all fixed numbers
         $fixedArray = [];
 
+        //forloop to fill the arrays
         for ($i = 0; $i < count($allUserGroups); $i++) {
 
             if ($allUserGroups[$i]->getFixedDiscount() != 0) {
@@ -153,18 +156,20 @@ class HomepageController
         var_dump($fixedArray);
         var_dump($variableArray);
 
+        //gets the highest variable
         if (!empty($variableArray)) {
             $maxVariable = max($variableArray);
         } else {
             $maxVariable = 0;
         }
 
+        //counts all the fixed numbers
         function countFixed($v1, $v2) {
             return $v1 + $v2;
         }
 
 
-
+//counts all the fixed numbers
         if (!empty($fixedArray)) {
             $countFixed = array_reduce($fixedArray, "countFixed");
         } else {
@@ -175,6 +180,7 @@ class HomepageController
         echo "<br>". $countFixed;
 
 
+        //the price - only the fixed reduction
         $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed,2);
         if ($fixedreductionResult < 0) {
             $fixedreductionResult =0;
@@ -182,18 +188,21 @@ class HomepageController
 
         echo "<br>result - fixed " . $fixedreductionResult;
 
+
+
         $variablePercentage = $maxVariable /100;
 
         $reductionVariable = $variablePercentage *$productArray[$productId]->getProductPrice();
 
         $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable,2);
-
+//the price with only the variable reduction
         echo "<br>result - variable " . $variableReductionResult;
 
         $compareArray = [];
         array_push($compareArray,$fixedreductionResult,$variableReductionResult );
         $winningDiscount = min($compareArray);
 
+        //see what discount is better
         if ($winningDiscount == $fixedreductionResult ) {
             echo "<br>fixed wins";
         } elseif ($winningDiscount == $variableReductionResult ) {
@@ -203,6 +212,8 @@ class HomepageController
 
         $finalResultMinFixed = $productArray[$productId]->getProductPrice()- $countFixed;
         $finalResultPercentage = $finalResultMinFixed * $variablePercentage;
+
+        //the final result
         $finalResult = round($finalResultMinFixed - $finalResultPercentage , 2);
 
         if ($finalResult < 0) {
