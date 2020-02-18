@@ -31,7 +31,9 @@ class HomepageController
         }
 
         //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
-        echo $userArray[$userId]->getId().'<br>';   // get the userid
+
+      echo $userArray[$userId]->getgroupId().'<br>';   // get the userid
+
 
 
         if (!isset($_POST['product'])) {
