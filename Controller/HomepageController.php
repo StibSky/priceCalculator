@@ -32,7 +32,7 @@ class HomepageController
 
         //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
 
-      echo $userArray[$userId]->getgroupId().'<br>';   // get the userid
+      echo "userid".$userArray[$userId]->getgroupId().'<br>';   // get the userid
 
 
 
@@ -58,8 +58,9 @@ class HomepageController
             $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"],$allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
         }
 
+        echo $groupArray[$userArray[$userId]->getgroupId()]->getGroupName();
 
-        var_dump($groupArray);
+        
 
         //make array of group objects
         $makeProduct = new ProductMaker();
