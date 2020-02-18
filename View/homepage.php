@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Becode - Boiler plate MVC</title>
 </head>
-<body>
+<body class="container-fluid">
+
 <?php require 'includes/header.php' ?>
 <div class="form-group">
 <form action="#" method="post" class="pl-5">
@@ -46,6 +47,7 @@
         <H3><?php echo $finalResult ?>€ </H3><small>(price with reduction)</small>
     </div>
 </div>
+<section class="pl-5 pr-5">
 <table class="table mt-4">
     <thead>
     <tr>
@@ -68,6 +70,7 @@
     </tr>
     </tbody>
 </table>
+</section>
 <?php require 'includes/footer.php' ?>
 </body>
 </html>
