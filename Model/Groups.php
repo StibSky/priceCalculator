@@ -14,8 +14,8 @@ class Groups
     {
         $this->id = $id;
         $this->name = $name;
-        $this->varDiscount = $variable_discount;
-        $this->fixedDiscount = $fixed_discount;
+        $this->variable_discount = $variable_discount;
+        $this->fixed_discount = $fixed_discount;
         $this->group_id = $group_id;
     }
 
@@ -32,4 +32,16 @@ class Groups
     public function getGroupGroupId() : int {
         return  $this -> group_id;
     }
+
+    public function getFixedDiscount(): int
+    {
+        return $this->fixed_discount;
+    }
+
+    public function getVariableDiscount(): int
+    {
+        return $this->variable_discount;
+    }
+
+
 }
