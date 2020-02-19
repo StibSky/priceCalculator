@@ -6,85 +6,38 @@ error_reporting(E_ALL);
 
 class HomepageController
 {
-    //render function with both $_GET and $_POST vars available if it would be needed.
     public function render()
     {
-
-
         //make array of user objects
         $makeUser = new UserMaker();
-        $everyone = $makeUser->fetchUsers();
-
-        for ($i = 0; $i < count($everyone); $i++) {
-            $userArray[$everyone[$i]['id']] = new User($everyone[$i]['id'], $everyone[$i]['name'], $everyone[$i]['group_id']);
-        }
-
-
-        //make array of group objects
-
-
+        $makeUser->fetchUsers();
+        $userArray =$makeUser->makeUserArray();
+        //initiate users
         if (!isset($_POST['users'])) {
             $userId = 1;
         } else {
             $userId = $_POST['users'];
         }
-
         //make array of product objects
         $makeProduct = new ProductMaker();
-        $allProducts = $makeProduct->fetchProducts();
-
-        for ($i = 0; $i < count($allProducts); $i++) {
-
-            $productArray[$allProducts[$i]['id']] = new Product($allProducts[$i]['id'], $allProducts[$i]['name'], $allProducts[$i]['description'], $allProducts[$i]['price']);
-        }
+        $makeProduct->fetchProducts();
+        $productArray =$makeProduct->makeProductArray();
 
 
-        $makeGroups = new GroupMaker();
-        $allGroups = $makeGroups->fetchGroups();
-
-        for ($i = 0; $i < count($allGroups); $i++) {
-            if (!isset($allGroups[$i]['variable_discount'])) {
-                $allGroups[$i]['variable_discount'] = 0;
-            } elseif (!isset($allGroups[$i]['fixed_discount'])) {
-                $allGroups[$i]['fixed_discount'] = 0;
-            }
-
-            if (!isset($allGroups[$i]['group_id'])) {
-                $allGroups[$i]['group_id'] = 10000000;
-            }
-
-            $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
-        }
-        //should compare id in some kind of loop, hardcoding right now, not safe if people add elements in json
-
-
+        //initiate products
         if (!isset($_POST['product'])) {
             $productId = 1;
         } else {
             $productId = $_POST['product'];
         }
 
+        //make array of group objects
+        $makeGroups = new GroupMaker();
+        $makeGroups->fetchGroups();
+        $groupArray = $makeGroups->makeGroupArray();
 
-        $allUserGroups = [];
-
-        //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP$
-
-            $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
-
-
-
-            $userGroupId = $userArray[$userId]->getgroupId();
-
-
-
-        array_push($allUserGroups, $groupArray[$userGroupId]);
-        array_push($allUserGroups, $groupArray[$groupGroupId]);
-        if ($groupArray[$groupGroupId]->getGroupGroupId() == 10000000) {
-
-        } else {
-            array_push($allUserGroups, $groupArray[$groupArray[$groupGroupId]->getGroupGroupId()]);
-        }
-
+        //array for all the groups a user belongs to
+        $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
 
         //array for all variable numbers
         $variableArray = [];
@@ -102,8 +55,7 @@ class HomepageController
             }
 
         }
-
-
+        
         //gets the highest variable
         if (!empty($variableArray)) {
             $maxVariable = max($variableArray);
@@ -117,33 +69,22 @@ class HomepageController
             return $v1 + $v2;
         }
 
-
-//counts all the fixed numbers
+        //counts all the fixed numbers
         if (!empty($fixedArray)) {
             $countFixed = array_reduce($fixedArray, "countFixed");
         } else {
             $countFixed = 0;
         }
-
-
-        //the price - only the fixed reduction
-
-
+        //the price minus only the fixed reduction
             $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed, 2);
             if ($fixedreductionResult < 0) {
                 $fixedreductionResult = 0;
             }
 
-
-
         $variablePercentage = $maxVariable / 100;
-
-
         $reductionVariable = $variablePercentage * $productArray[$productId]->getProductPrice();
-
-
+        //the price with only the variable reduction
         $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable, 2);
-//the price with only the variable reduction
 
 
         $compareArray = [];
@@ -152,11 +93,8 @@ class HomepageController
 
         //see what discount is better
         if ($winningDiscount == $fixedreductionResult) {
-
         } elseif ($winningDiscount == $variableReductionResult) {
-
         }
-
 
         $finalResultMinFixed = $productArray[$productId]->getProductPrice() - $countFixed;
         $finalResultPercentage = $finalResultMinFixed * $variablePercentage;
