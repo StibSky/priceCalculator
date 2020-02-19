@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 <div class="form-group">
-<form action="#" method="post" class="pl-5 pt-5">
-    <div class="row mt-5">
+<form action="#" method="post" class="pl-5 pt-1">
+    <div class="row mt-2">
     <section>
         <div class="form-group" class="col">
         <label for="users" class="ml-3">Choose a person:</label>
@@ -29,7 +29,7 @@
             <label for="quantity" class="ml-5">Qty:</label>
         <select id="quantity" name="quantity" class="form-control ml-5">
             <?php for($z=0; $z<51; $z++): ?>
-                <option value="<?php echo $z ?>"><?php echo $z ?></option>
+                <option value="<?php echo $z; ?>"><?php echo $z; ?></option>
             <?php endfor; ?>
         </select>
         </div>
@@ -61,7 +61,7 @@
         <th scope="col">variable-discount</th>
         <th scope="col">reduced price</th>
         <th scope="col">quantity</th>
-        <th scope="col">quantityPrice</th>
+        <th scope="col">discount-company</th>
     </tr>
     </thead>
     <tbody>
