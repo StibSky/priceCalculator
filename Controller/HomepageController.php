@@ -112,11 +112,11 @@ class HomepageController
 
 
         if ($quantity >= 20 ) {
-            $finalResult = ($quantity * $finalResult) * 0.9;
+            $finalTotalResult = ($quantity * $finalResult) * 0.9;
         } elseif  ($quantity >= 40) {
-            $finalResult = ($quantity * $finalResult) * 0.8;
+            $finalTotalResult = ($quantity * $finalResult) * 0.8;
         } else {
-            $finalResult = $quantity * $finalResult;
+            $finalTotalResult = $quantity * $finalResult;
         }
 
 
