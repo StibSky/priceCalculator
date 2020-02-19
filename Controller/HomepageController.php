@@ -23,9 +23,8 @@ class HomepageController
         //make array of group objects
 
 
-        $userId = "";
         if (!isset($_POST['users'])) {
-            $_POST['users'] = "test";
+            $userId = 1;
         } else {
             $userId = $_POST['users'];
         }
@@ -60,7 +59,7 @@ class HomepageController
 
 
         if (!isset($_POST['product'])) {
-            $_POST['product'] = "test";
+            $productId = 1;
         } else {
             $productId = $_POST['product'];
         }
@@ -68,10 +67,14 @@ class HomepageController
 
         $allUserGroups = [];
 
-        
         //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP$
-        $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
-        $userGroupId = $userArray[$userId]->getgroupId();
+
+            $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
+
+
+
+            $userGroupId = $userArray[$userId]->getgroupId();
+
 
 
         array_push($allUserGroups, $groupArray[$userGroupId]);
@@ -109,7 +112,8 @@ class HomepageController
         }
 
         //counts all the fixed numbers
-        function countFixed($v1, $v2) {
+        function countFixed($v1, $v2)
+        {
             return $v1 + $v2;
         }
 
@@ -122,41 +126,43 @@ class HomepageController
         }
 
 
-
         //the price - only the fixed reduction
-        $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed,2);
-        if ($fixedreductionResult < 0) {
-            $fixedreductionResult =0;
-        }
+
+
+            $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed, 2);
+            if ($fixedreductionResult < 0) {
+                $fixedreductionResult = 0;
+            }
 
 
 
+        $variablePercentage = $maxVariable / 100;
 
-        $variablePercentage = $maxVariable /100;
 
-        $reductionVariable = $variablePercentage *$productArray[$productId]->getProductPrice();
+        $reductionVariable = $variablePercentage * $productArray[$productId]->getProductPrice();
 
-        $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable,2);
+
+        $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable, 2);
 //the price with only the variable reduction
 
 
         $compareArray = [];
-        array_push($compareArray,$fixedreductionResult,$variableReductionResult );
+        array_push($compareArray, $fixedreductionResult, $variableReductionResult);
         $winningDiscount = min($compareArray);
 
         //see what discount is better
-        if ($winningDiscount == $fixedreductionResult ) {
+        if ($winningDiscount == $fixedreductionResult) {
 
-        } elseif ($winningDiscount == $variableReductionResult ) {
+        } elseif ($winningDiscount == $variableReductionResult) {
 
         }
 
 
-        $finalResultMinFixed = $productArray[$productId]->getProductPrice()- $countFixed;
+        $finalResultMinFixed = $productArray[$productId]->getProductPrice() - $countFixed;
         $finalResultPercentage = $finalResultMinFixed * $variablePercentage;
 
         //the final result
-        $finalResult = round($finalResultMinFixed - $finalResultPercentage , 2);
+        $finalResult = round($finalResultMinFixed - $finalResultPercentage, 2);
 
         if ($finalResult < 0) {
             $finalResult = 0;
