@@ -12,15 +12,10 @@
     <body class="container-fluid">
 <header>
     <nav class="navbar navbar-expand-md fixed-top bg-secondary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-        <form class="form-inline mt-2 mt-md-0 float-right" id="form_2" method="post" action="#">
-            <input class="form-control mr-sm-2" type="text" placeholder="User" aria-label="user" name="user">
-            <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label=pasword" name="pasword">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="submit_2" name="submit_2">Logon</button>
+        <form class="form-inline mt-2" id="form_2" method="post" action="#">
+            <input class="form-control mr-sm-2 float-md-right" type="text" placeholder="User" aria-label="user" name="user">
+            <input class="form-control mr-sm-2 float-md-right" type="text" placeholder="Password" aria-label=pasword" name="pasword">
+            <button class="btn btn-secondary my-2 my-sm-0 float-md-right" type="submit" id="submit_2" name="submit_2">Logon</button>
         </form>
-
     </nav>
 </header>
