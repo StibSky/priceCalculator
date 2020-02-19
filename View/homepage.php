@@ -68,6 +68,9 @@
         <th scope="col">original price</th>
         <th scope="col">fixed-discount</th>
         <th scope="col">variable-discount</th>
+        <th scope="col">reduced price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">quantityPrice</th>
     </tr>
     </thead>
     <tbody>
@@ -78,6 +81,9 @@
         <td><?php echo $productArray[$productId]->getProductPrice()." €"; ?></td>
         <td><?php echo $countFixed ?></td>
         <td><?php echo $maxVariable."%" ?></td>
+        <td><?php echo $finalResult ?></td>
+        <td><?php echo ""; ?></td> // moet nog gemaakt worden op de homecontrollerpage
+        <td><?php echo ""; ?></td> // moet nog gemaakt worden op de homecontrollerpage
     </tr>
     </tbody>
 </table>
