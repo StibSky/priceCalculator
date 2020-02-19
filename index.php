@@ -8,6 +8,7 @@ require 'Model/Product.php';
 require 'Model/ProductMaker.php';
 require 'Model/Groups.php';
 require 'Model/GroupMaker.php';
+require 'Model/Calculator.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 

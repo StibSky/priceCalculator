@@ -37,14 +37,17 @@ class HomepageController
 
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
-        //array for all variable numbers
-        $variableArray = [];
+
+        $calculator = new Calculator();
+
+        $calculator->makeDiscountArrays($allUserGroups);
         //array for all fixed numbers
         $fixedArray = [];
+        //array for all variable numbers
+        $variableArray = [];
 
         //forloop to fill the arrays
         for ($i = 0; $i < count($allUserGroups); $i++) {
-
             if ($allUserGroups[$i]->getFixedDiscount() != 0) {
                 array_push($fixedArray, $allUserGroups[$i]->getFixedDiscount());
             }
@@ -53,7 +56,6 @@ class HomepageController
             }
 
         }
-
         //gets the highest variable
         if (!empty($variableArray)) {
             $maxVariable = max($variableArray);
