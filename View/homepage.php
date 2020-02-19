@@ -51,7 +51,7 @@
     </div>
 </div>
 <section class="pl-5 pr-5">
-<table class="table mt-4">
+<table class="table mt-2">
     <thead>
     <tr>
         <th scope="col">#client-id</th>
