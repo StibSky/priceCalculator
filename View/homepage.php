@@ -46,7 +46,7 @@
     <div class="card-body">
         <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
         <p class="card-text"><?php echo $productArray[$productId]->getProductDescription()?></p>
-        <H3><?php echo $finalResult ?>€ </H3><small>(price with reduction)</small>
+        <H3><?php echo $finalTotalResult; ?>€ </H3><small>(price with reduction)</small>
     </div>
 </div>
 <section class="pl-5 pr-5">
@@ -61,7 +61,7 @@
         <th scope="col">variable-discount</th>
         <th scope="col">price per unit</th>
         <th scope="col">quantity</th>
-        <th scope="col">reduced price</th>
+        <th scope="col">reduced total price</th>
     </tr>
     </thead>
     <tbody>
