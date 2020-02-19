@@ -38,8 +38,6 @@ class HomepageController
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
 
-
-
         //array for all fixed numbers
         $fixedArray = [];
         //array for all variable numbers
@@ -103,6 +101,25 @@ class HomepageController
         if ($finalResult < 0) {
             $finalResult = 0;
         }
+
+        if (!isset($_POST['quantity'])) {
+            $quantity = 0;
+        } else {
+            $quantity = $_POST['quantity'];
+        }
+
+
+        if ($quantity >= 20 ) {
+            $finalResult = ($quantity * $finalResult) * 0.9;
+        } elseif  ($quantity >= 40) {
+            $finalResult = ($quantity * $finalResult) * 0.8;
+        } else {
+            $finalResult = $quantity * $finalResult;
+        }
+
+
+
+
         require 'View/homepage.php';
     }
 }

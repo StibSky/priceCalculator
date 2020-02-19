@@ -28,4 +28,6 @@ class Calculator
         }
         return $this->variableArray;
     }
+
+
 }
