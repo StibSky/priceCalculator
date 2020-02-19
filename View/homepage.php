@@ -1,7 +1,7 @@
 <?php require 'includes/header.php' ?>
 <div class="form-group">
-<form action="#" method="post" class="pl-5">
-    <div class="row">
+<form action="#" method="post" class="pl-5 pt-5">
+    <div class="row mt-5">
     <section>
         <div class="form-group" class="col">
         <label for="users" class="ml-3">Choose a person:</label>
@@ -40,8 +40,11 @@
 </form>
 </div>
 <div class="card ml-5" style="width: 18rem;">
-    <div class="card-body">
+
+        <div class="card-header">
     <p>You are <?php echo $userArray[$userId]->getName() ?> and you have chosen: </p>
+        </div>
+    <div class="card-body">
         <h5 class="card-title"><?php echo $productArray[$productId]->getProductName(); ?></h5>
         <p class="card-text"><?php echo $productArray[$productId]->getProductDescription()?></p>
         <H3><?php echo $finalResult ?>€ </H3><small>(price with reduction)</small>
@@ -71,12 +74,10 @@
         <td><?php echo $countFixed ?></td>
         <td><?php echo $maxVariable."%" ?></td>
         <td><?php echo $finalResult ?></td>
-        <td><?php echo ""; ?></td> // moet nog gemaakt worden op de homecontrollerpage
-        <td><?php echo ""; ?></td> // moet nog gemaakt worden op de homecontrollerpage
+        <td><?php echo ""; ?></td> <?echo // moet nog gemaakt worden op de homecontrollerpage ?>
+        <td><?php echo ""; ?></td> <? echo // moet nog gemaakt worden op de homecontrollerpage ?>
     </tr>
     </tbody>
 </table>
 </section>
 <?php require 'includes/footer.php' ?>
-</body>
-</html>
