@@ -20,6 +20,7 @@
         <label for="product" class="ml-4">Choose a product:</label>
         <select name="product" id="product" class="form-control ml-4">
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
+              <?php // value='<?php if (isset($productArray[$i]->getProductId())) {echo "$productArray[$i]->getProductName()";}' ?>
                 <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
         </select>
