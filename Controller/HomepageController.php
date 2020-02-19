@@ -89,7 +89,9 @@ class HomepageController
 
         //see what discount is better
         if ($winningDiscount == $fixedreductionResult) {
+            $lowestDiscount = "fixed";
         } elseif ($winningDiscount == $variableReductionResult) {
+            $lowestDiscount = "variable";
         }
 
         $finalResultMinFixed = $productArray[$productId]->getProductPrice() - $countFixed;
