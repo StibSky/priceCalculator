@@ -59,7 +59,7 @@
         <th scope="col">original price</th>
         <th scope="col">fixed-discount</th>
         <th scope="col">variable-discount</th>
-        <th scope="col">price per unit</th>
+        <th scope="col">reduced price per unit</th>
         <th scope="col">quantity</th>
         <th scope="col">reduced total price</th>
     </tr>
