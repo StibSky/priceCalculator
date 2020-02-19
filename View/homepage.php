@@ -28,10 +28,9 @@
         <div class="form-group" class="col">
             <label for="quantity" class="ml-5">Qty:</label>
         <select id="quantity" name="quantity" class="form-control ml-5">
-            <?php for($z=0; $z<51; $z++){
-                echo '<option value=".$z.">'.$z.'</option>';
-    }
-            ?>
+            <?php for($z=0; $z<51; $z++): ?>
+                <option value="<?php echo $z ?>"><?php echo $z ?></option>
+            <?php endfor; ?>
         </select>
         </div>
     </section>
