@@ -74,8 +74,8 @@
         <td><?php echo $countFixed ?></td>
         <td><?php echo $maxVariable."%" ?></td>
         <td><?php echo $finalResult ?></td>
-        <td><?php echo ""; ?></td> <?echo // moet nog gemaakt worden op de homecontrollerpage ?>
-        <td><?php echo ""; ?></td> <? echo // moet nog gemaakt worden op de homecontrollerpage ?>
+        <td><?php echo ""; ?></td> <?echo "";// moet nog gemaakt worden op de homecontrollerpage ?>
+        <td><?php echo ""; ?></td> <? echo "";// moet nog gemaakt worden op de homecontrollerpage ?>
     </tr>
     </tbody>
 </table>
