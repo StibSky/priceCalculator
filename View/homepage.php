@@ -1,5 +1,6 @@
 <?php require 'includes/header.php' ?>
 <div class="form-group">
+    <h1 class="ml-5 mt-2">Price calculator</h1>
 <form action="#" method="post" class="pl-5 pt-1">
     <div class="row mt-2">
     <section>
