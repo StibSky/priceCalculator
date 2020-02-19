@@ -38,6 +38,7 @@ class HomepageController
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
 
+
         //array for all fixed numbers
         $fixedArray = [];
         //array for all variable numbers
