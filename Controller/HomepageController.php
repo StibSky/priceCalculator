@@ -11,7 +11,7 @@ class HomepageController
         //make array of user objects
         $makeUser = new UserMaker();
         $makeUser->fetchUsers();
-        $userArray =$makeUser->makeUserArray();
+        $userArray = $makeUser->makeUserArray();
         //initiate users
         if (!isset($_POST['users'])) {
             $userId = 1;
@@ -21,7 +21,7 @@ class HomepageController
         //make array of product objects
         $makeProduct = new ProductMaker();
         $makeProduct->fetchProducts();
-        $productArray =$makeProduct->makeProductArray();
+        $productArray = $makeProduct->makeProductArray();
 
         //initiate products
         if (!isset($_POST['product'])) {
@@ -38,9 +38,6 @@ class HomepageController
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
 
-        $calculator = new Calculator();
-
-        $calculator->makeDiscountArrays($allUserGroups);
         //array for all fixed numbers
         $fixedArray = [];
         //array for all variable numbers
@@ -76,10 +73,10 @@ class HomepageController
             $countFixed = 0;
         }
         //the price minus only the fixed reduction
-            $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed, 2);
-            if ($fixedreductionResult < 0) {
-                $fixedreductionResult = 0;
-            }
+        $fixedreductionResult = round($productArray[$productId]->getProductPrice() - $countFixed, 2);
+        if ($fixedreductionResult < 0) {
+            $fixedreductionResult = 0;
+        }
 
         $variablePercentage = $maxVariable / 100;
         $reductionVariable = $variablePercentage * $productArray[$productId]->getProductPrice();
