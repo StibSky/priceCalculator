@@ -27,7 +27,4 @@ class User
     public function getgroupId() : int {
         return  $this -> groupId;
     }
-
-
-
 }

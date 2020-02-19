@@ -4,6 +4,14 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+//include all your model files here
+require 'Model/User.php';
+require 'Model/UserMaker.php';
+require 'Model/Product.php';
+require 'Model/ProductMaker.php';
+require 'Model/Groups.php';
+require 'Model/GroupMaker.php';
+
 class HomepageController
 {
     public function render()
@@ -37,6 +45,8 @@ class HomepageController
 
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
+
+
 
 
         //array for all fixed numbers
