@@ -66,62 +66,10 @@ class HomepageController
         }
 
 
-
-
-        // THIS LOOPS SHOULD WORK BUT DOESNT YET, CHECK BELLOW FOR HARDCODING
-
-
-//        function findgroup($id, $array)
-//        {
-//            foreach ($array as $group) {
-//                if ($group->getGroupId() == $id) {
-//                    return $group;
-//                }
-//            }
-//        }
-//
-//        function getAllGroups($searchId)
-//        {
-//            $makeGroups = new GroupMaker();
-//            $allGroups = $makeGroups->fetchGroups();
-//
-//            for ($i = 0; $i < count($allGroups); $i++) {
-//                if (!isset($allGroups[$i]['variable_discount'])) {
-//                    $allGroups[$i]['variable_discount'] = 0;
-//                } elseif (!isset($allGroups[$i]['fixed_discount'])) {
-//                    $allGroups[$i]['fixed_discount'] = 0;
-//                }
-//
-//                if (!isset($allGroups[$i]['group_id'])) {
-//                    $allGroups[$i]['group_id'] = 10000000;
-//                }
-//
-//                $groupArray[$allGroups[$i]['id']] = new Groups($allGroups[$i]['id'], $allGroups[$i]['name'], $allGroups[$i]["variable_discount"], $allGroups[$i]["fixed_discount"], $allGroups[$i]['group_id']);
-//            }
-//            $groupsFound = [];
-//
-//            while ($searchId !== 10000000) {
-//                $newGroup = findgroup($searchId, $groupArray);
-//                array_push($groupsFound, $newGroup);
-//                if ($newGroup->getGroupGroupId() !== 10000000)
-//		    {
-//                $searchId = $newGroup->getGroupGroupId();
-//		    }
-//		    else
-//		    {
-//                $searchID = 10000000;
-//            }
-//
-//            }
-//            return $groupsFound;
-//        }
-//
-//       $customerGroupDisplay = getAllGroups($userArray[$userId]->getgroupId());
-
-
-        //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP
         $allUserGroups = [];
 
+        
+        //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP$
         $groupGroupId = $groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
         $userGroupId = $userArray[$userId]->getgroupId();
 
@@ -198,7 +146,7 @@ class HomepageController
 
         //see what discount is better
         if ($winningDiscount == $fixedreductionResult ) {
-        
+
         } elseif ($winningDiscount == $variableReductionResult ) {
 
         }
