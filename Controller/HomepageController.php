@@ -23,7 +23,6 @@ class HomepageController
         $makeProduct->fetchProducts();
         $productArray =$makeProduct->makeProductArray();
 
-
         //initiate products
         if (!isset($_POST['product'])) {
             $productId = 1;
@@ -38,7 +37,6 @@ class HomepageController
 
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);
-
         //array for all variable numbers
         $variableArray = [];
         //array for all fixed numbers
@@ -55,7 +53,7 @@ class HomepageController
             }
 
         }
-        
+
         //gets the highest variable
         if (!empty($variableArray)) {
             $maxVariable = max($variableArray);
@@ -86,7 +84,6 @@ class HomepageController
         //the price with only the variable reduction
         $variableReductionResult = round($productArray[$productId]->getProductPrice() - $reductionVariable, 2);
 
-
         $compareArray = [];
         array_push($compareArray, $fixedreductionResult, $variableReductionResult);
         $winningDiscount = min($compareArray);
@@ -105,12 +102,6 @@ class HomepageController
         if ($finalResult < 0) {
             $finalResult = 0;
         }
-
-
-        //you should not echo anything inside your controller - only assign vars here
-        // then the view will actually display them.    echo($everyone[0]);
-        //load the view
-
         require 'View/homepage.php';
     }
 }
