@@ -48,7 +48,7 @@ class HomepageController
 
 
 
-
+///////////////---------------THIS SHOULD NOT BE  IN RENDER---------------------------
         //array for all fixed numbers
         $fixedArray = [];
         //array for all variable numbers
