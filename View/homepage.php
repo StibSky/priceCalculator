@@ -19,10 +19,11 @@
         <div class="form-group" class="col">
         <label for="product" class="ml-4">Choose a product:</label>
         <select name="product" id="product" class="form-control ml-4">
+            <?php // if (isset($_POST['product'])):echo "<option value=".$productId.">".$productArray[$productId]->getProductName()."</option>"; else: ?>
             <?php for ($i = 0; $i < count($productArray); $i++): ?>
-              <?php // value='<?php if (isset($productArray[$i]->getProductId())) {echo "$productArray[$i]->getProductName()";}' ?>
-                <option value= <?php echo $productArray[$i]->getProductId() ?>> <?php echo $productArray[$i]->getProductName() ?></option>
+                <option value="<?php echo $productArray[$i]->getProductId() ?>"> <?php echo $productArray[$i]->getProductName() ?></option>
             <?php endfor; ?>
+            <?php // endif;// dit moet anders, nu maar één value om tussen te kiezen dus eerst de post leegmaken want anders... } ?>
         </select>
         </div>
     </section>
