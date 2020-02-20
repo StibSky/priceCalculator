@@ -24,7 +24,7 @@ class HomepageController
         if (!isset($_POST['users'])) {
             $userId = 1;
         } else {
-            $userId = $_POST['users'];
+            $userId = (int)$_POST['users'];
         }
         //make array of product objects
         $makeProduct = new ProductMaker();
@@ -42,6 +42,7 @@ class HomepageController
         $makeGroups = new GroupMaker();
         $makeGroups->fetchGroups();
         $groupArray = $makeGroups->makeGroupArray();
+
 
         //array for all the groups a user belongs to
         $allUserGroups = $makeGroups->makeUserGroupArray($userArray, $userId);

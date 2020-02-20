@@ -10,7 +10,7 @@ class Groups
     private $fixed_discount;
     private $group_id;
 
-    public function __construct(int $id, string $name, int $variable_discount, int $fixed_discount, int $group_id)
+    public function __construct(int $id, string $name, int $variable_discount, int $fixed_discount, int $group_id = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -29,7 +29,7 @@ class Groups
         return $this -> id;
     }
 
-    public function getGroupGroupId() : int {
+    public function getGroupGroupId() :? int {
         return  $this -> group_id;
     }
 

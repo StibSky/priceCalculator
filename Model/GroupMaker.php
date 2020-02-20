@@ -23,7 +23,7 @@ private $groupArray;
             }
 
             if (!isset($this->groups[$i]['group_id'])) {
-                $this->groups[$i]['group_id'] = 10000000;
+                $this->groups[$i]['group_id'] = null;
             }
 
             $this->groupArray[$this->groups[$i]['id']] = new Groups($this->groups[$i]['id'], $this->groups[$i]['name'], $this->groups[$i]["variable_discount"], $this->groups[$i]["fixed_discount"], $this->groups[$i]['group_id']);
@@ -31,20 +31,28 @@ private $groupArray;
         return $this->groupArray;
     }
 
-    public function makeUserGroupArray($userArray, $userId): array {
+    public function findGroup(int $groupId) :? Groups {
+        if(isset($this->groupArray[$groupId])) {
+            return $this->groupArray[$groupId];
+        }
+
+        return null;
+    }
+
+    public function makeUserGroupArray(array $userArray, int $userId): array {
         $allUserGroups = [];
 
-        //HARDCODING THE GROUPS OF A USER, SHOULD BE IN A LOOP$---------------------------------------------------------------
+        $groupid = $userArray[$userId]->getgroupId();
 
-        $groupGroupId = $this->groupArray[$userArray[$userId]->getgroupId()]->getGroupGroupId();
-        $userGroupId = $userArray[$userId]->getgroupId();
+        while ($groupid !== null) {
+            $groupsChain = $this->findGroup($groupid);
 
-        array_push($allUserGroups, $this->groupArray[$userGroupId]);
-        array_push($allUserGroups, $this->groupArray[$groupGroupId]);
-        if ($this->groupArray[$groupGroupId]->getGroupGroupId() == 10000000) {
+            if($groupsChain === null) {
+                break;
+            }
 
-        } else {
-            array_push($allUserGroups, $this->groupArray[$this->groupArray[$groupGroupId]->getGroupGroupId()]);
+            array_push($allUserGroups, $groupsChain);
+            $groupid = $groupsChain->getGroupGroupId();
         }
 
         return $allUserGroups;
