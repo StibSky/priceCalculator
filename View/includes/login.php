@@ -1,41 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="ownCSS.css">
-    <title>Becode - login MVC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="price calculator login">
+    <meta name="author" content="Steve & Ann @becode">
+    <title>Price calculator - login page</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="ownCSS.css">
 </head>
-<body  class="text-center">
-    <form class="form-signin" id="form_2" method="post" action="#">
-        <div class="row">
-            <div class="col-3">
-        <input class="form-control mr-sm-2" type="text" placeholder="User" aria-label="user" name="user" id="user">
-        <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label=password" name="password" id="password">
-        <button class="btn btn-secondary float-md-right my-2 my-sm-0" type="submit" id="submit_2" name="submit_2">Logon</button>
-        </div>
-        </div>
-    </form>
 
+<body class="text-center">
+<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <h1 class="h3 mb-2 font-weight-normal">Price calculator</h1>
+    <img class="mb-0" src="img/becode-4.png" alt="becode-4.png">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" name="user_email" required autofocus>
+    <input type="password" id="inputPassword" name="password" class="form-control mb-3" placeholder="Password" required>
+    <div class="checkbox mb-1">
+        <label>
+            <input type="checkbox" value="remember-me" class="mb-1"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-secondary mb-3 btn-block" type="submit" name="submit_2">sign in</button>
+    <p class="mt-2 text-muted">&copy; 2020</p>
+</form>
 </body>
 </html>
+
 <?php
-require("Controller/HomepageController.php");
-
+//require("Controller/HomepageController.php");
 // this must be placed on the controller page
-if($_POST['submit_2']){
-    $user=$_POST['user'];
-    $password=$_POST['password'];
+if($_POST['user_email']) {
 
-    if(($user=='admin')&&($password=='WachtWoord123')){
+    $user_email = $_POST['user_email'];
+    $password = $_POST['password'];
 
-        echo  '<script language=\'javascript\'>document.querySelector("#user").innerHTML = "You may pass!"</script>';
+    if ($user_email == 'admin@becode.be') {
 
-    }else{
-        echo  '<script language=\'javascript\'>document.querySelector("#user").innerHTML = "wrong password or user!"</script>';
+        echo '<script language="javascript">document.getElementById("inputEmail").placeholder = 
+            "right email!"; </script>';
+        echo '<script language="javascript">document.getElementById("inputEmail").style.backgroundColor = "#DAF7A6"; </script>';
+
+    } else {
+        echo '<script language="javascript">document.getElementById("inputEmail").placeholder = 
+            "wrong email!"; </script>';
+        echo '<script language="javascript">document.getElementById("inputEmail").style.backgroundColor = "pink"; </script>';
     }
+    if ($password == 'WachtWoord123') {
+
+        echo '<script language="javascript">document.getElementById("inputPassword").placeholder = 
+            "right email!"; </script>';
+        echo '<script language="javascript">document.getElementById("inputPassword").style.backgroundColor = "#DAF7A6"; </script>';
+
+    } else {
+        echo '<script language="javascript">document.getElementById("inputPassword").placeholder = 
+            "wrong password!"; </script>';
+        echo '<script language="javascript">document.getElementById("inputPassword").style.backgroundColor = "pink"; </script>';
+    }
+    if(($user_email == 'admin@becode.be') && ($password == 'WachtWoord123')){
+        header('Location: ../homepage.php/');
+        //exit;
+    }
+}else{
+    echo '<script language="javascript">document.getElementById("inputEmail").style.backgroundColor = "white"; </script>';
+    echo '<script language="javascript">document.getElementById("inputPassword").style.backgroundColor = "white"; </script>';
+
 }
+
+
+// nog een register pagina maken en dan laten registreren in sessions en vergelijken bij login met de inhoud van de session of in een bestand opslaan, da's beter
+/*<form id="demo" action=‘submit.php’ method=‘post’ enctype=‘text/plain’>
+Naam: <input type=‘text’ name=‘web’ value="" /></br>
+<input type=‘submit’ value=‘submit’ />
+</form>
+<?php
+
+// dit zal zeker wél werken! :)
+$file = 'people.txt';
+// Open the file to get existing content
+$current = file_get_contents($file);
+// Append a new person to the file
+$current .= "John Smith\n";
+// Write the contents back to the file
+file_put_contents($file, $current);
+?>
+
+header(‘location: thanks . html’);
+exit(); */
+
 ?>
