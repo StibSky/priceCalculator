@@ -6,9 +6,7 @@
             <section>
                 <div class="form-group" class="col">
                     <label for="users" class="ml-3">Choose a person:</label>
-
                     <select id="users" name="users" class="form-control ml-3">
-
                         <?php for ($i = 0; $i < count($userArray); $i++): ?>
                             <?php if ($_POST['users'] == $i): ?>
                                 <option value='<?php echo $userArray[$i]->getId() ?>'
@@ -27,14 +25,13 @@
                     <label for="product" class="ml-4">Choose a product:</label>
                     <select name="product" id="product" class="form-control ml-4">
                         <?php for ($i = 0; $i < count($productArray); $i++): ?>
-                            <?php if ($_POST['products'] == $i): ?>
+                            <?php if ($_POST['product'] == $i): ?>
                                 <option value="<?php echo $productArray[$i]->getProductId() ?>"
                                         selected='selected'>  <?php echo $productArray[$i]->getProductName() ?></option>
                             <?php else: ?>
                                 <option value='<?php echo $productArray[$i]->getProductId() ?>'> <?php echo $productArray[$i]->getProductName() ?></option>
                             <?php endif; ?>
                         <?php endfor; ?>
-
                     </select>
                 </div>
             </section>
@@ -43,7 +40,11 @@
                     <label for="quantity" class="ml-5">Qty:</label>
                     <select id="quantity" name="quantity" class="form-control ml-5">
                         <?php for ($z = 0; $z < 51; $z++): ?>
-                            <option value="<?php echo $z; ?>"><?php echo $z; ?></option>
+                            <?php if ($_POST['quantity'] == $z): ?>
+                                <option value="<?php echo $z; ?>" selected="selected"><?php echo $z; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $z; ?>"><?php echo $z; ?></option>
+                            <?php endif; ?>
                         <?php endfor; ?>
                     </select>
                 </div>
