@@ -7,12 +7,19 @@
         <div class="form-group" class="col">
         <label for="users" class="ml-3">Choose a person:</label>
 
-        <select id="users" name="users" class="form-control ml-3">
+            <select id="users" name="users" class="form-control ml-3">
 
-            <?php for ($i = 0; $i < count($userArray); $i++): ?>
-                <option value= <?php echo $userArray[$i]->getId() ?>> <?php echo $userArray[$i]->getName() ?></option>
-            <?php endfor; ?>
-        </select>
+                <?php for ($i = 0; $i < count($userArray); $i++): ?>
+                    <?php if($_POST['users'] == $i): ?>
+                        <option value='<?php echo $userArray[$i]->getId() ?>'
+                                selected='selected'> <?php echo $userArray[$i]->getName() ?></option>
+                    <?php else: ?>
+                        <option value='<?php echo $userArray[$i]->getId() ?>'> <?php echo $userArray[$i]->getName() ?></option>
+
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+            </select>
         </div>
     </section>
     <section>
